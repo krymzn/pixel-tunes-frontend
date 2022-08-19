@@ -41,7 +41,7 @@
     <div style="display: flex; justify-content: center; align-items: center; margin-top: 5rem;">
       <img
         style="margin-left: 3rem;max-width: 80%;max-height: 80%;"
-        src="https://music-from-picture--backend.herokuapp.com/getImage"
+        src="https://thawing-escarpment-90509.herokuapp.com/getImage"
         id="output_image"
         width="650px"
       />
@@ -115,7 +115,7 @@
           },
         }
         fetch(
-          'https://music-from-picture--backend.herokuapp.com/getPalette',
+          'https://thawing-escarpment-90509.herokuapp.com/getPalette',
           options
         )
           .then((res) => res.json())
@@ -126,7 +126,7 @@
           })
           .then((res) => {
             fetch(
-              'https://music-from-picture--backend.herokuapp.com/getnotes',
+              'https://thawing-escarpment-90509.herokuapp.com/getnotes',
               options
             )
               .then((res) => res.json())
