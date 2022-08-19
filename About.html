@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>img2wav</title>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Khand"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+    ></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+  </head>
+  <body
+    style="
+      overflow:hidden;
+      background: rgb(195, 69, 255);
+      background: linear-gradient(
+        0deg,
+        rgba(195, 69, 255, 1) 10%,
+        rgba(255, 126, 205, 1) 90%
+      );
+      height: 100vh;
+      background-repeat: no-repeat;
+      width: 100%;
+      font-family: 'Khand';
+      font-size: 22px;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 3rem;
+      "
+    >
+      <img src="./Group 9.png" style="cursor: pointer" onclick="goToHome()" />
+      <img src="./BACK TO HOME.png" style="cursor: pointer" alt="About" onclick="goToHome()" />
+    </div>
+    <div
+      class=""
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 200px;
+        margin-right: 200px;
+      "
+    >
+      <img src="./ABOUT PIXELTUNES.png" style="cursor: pointer" />
+      <p style="color: #ffd1f8; font-size: 2rem; font-weight: 700;">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
+    </div>
+    <script>
+        function goToHome() {
+        window.location.replace('index.html')
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>img2wav</title>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+      type="text/css"
+    />
+    <!-- <script src="./script.js" defer></script>
+    <script src="./p5/p5.js"></script>
+    <script src="./p5/addons/p5.sound.js"></script> -->
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+    ></script>
+  </head>
+  <body
+    style="
+      background: rgb(195, 69, 255);
+      background: linear-gradient(
+        0deg,
+        rgba(195, 69, 255, 1) 10%,
+        rgba(255, 126, 205, 1) 90%
+      );
+      height: 100vh;
+      background-repeat: no-repeat;
+      width: 100%;
+      overflow:hidden;
+    "
+  >
+    <div
+      style="
+        margin: 3rem;
+      "
+
+    >
+      <img src="./Group 9.png" style="cursor: pointer;" onclick="goToHome()" />
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 5rem;">
+      <img
+        style="margin-left: 3rem;max-width: 80%;max-height: 80%;"
+        src="https://music-from-picture--backend.herokuapp.com/getImage"
+        id="output_image"
+        width="650px"
+      />
+      <div
+        class="right"
+        style="
+          width: 50vw;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center" id="boxes"></div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            width: 30vw;
+            margin-top: 5rem;
+          "
+        >
+          <div
+            style="display: flex; flex-direction: column; align-items: center;cursor: pointer;"
+          >
+            <label for="play-music" style="cursor: pointer;">
+              <img src="./Play Button.svg" height="150px" />
+            </label>
+            <button id="play-music" onclick="playMusic()" hidden></button>
+            <label for="play-music" style="margin-top: 2rem;cursor: pointer;">
+              <img src="./PLAY YOUR SOUND.svg" alt="" />
+            </label>
+          </div>
+
+          <!-- <div
+            style="display: flex; flex-direction: column; align-items: center"
+          >
+            <label for="download-music">
+              <img src="./DLoad Button.svg" height="150px" />
+            </label>
+            <button id="download-music" onclick="download()" hidden></button>
+            <label for="download-music" style="margin-top: 2rem">
+              <img src="./DOWNLOAD WAV.svg" alt="" />
+            </label>
+          </div> -->
+
+          <div
+            style="display: flex; flex-direction: column; align-items: center;cursor: pointer;"
+          >
+            <label for="go-home" style="cursor:pointer;">
+              <img src="./Home Button.svg" height="150px" />
+            </label>
+            <button id="go-home" onclick="goToHome()" hidden></button>
+            <label for="go-home" style="margin-top: 2rem;cursor: pointer;">
+              <img src="./TRY ANOTHER IMAGE.svg" alt="" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var notes = []
+      var rhythm = []
+      window.onload = function () {
+        console.log('I am here')
+        let color = []
+        const options = {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+        fetch(
+          'https://music-from-picture--backend.herokuapp.com/getPalette',
+          options
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res['palette'])
+            color.push(...res['palette'])
+            displayBoxes(color)
+          })
+          .then((res) => {
+            fetch(
+              'https://music-from-picture--backend.herokuapp.com/getnotes',
+              options
+            )
+              .then((res) => res.json())
+              .then((res) => {
+                console.log(`INSIDE SCRIPT.JS`, res)
+                notes.push(...res['notes'])
+                console.log(notes)
+                rhythm.push(notes[0])
+                rhythm.push(notes[2])
+                rhythm.push(notes[4])
+
+                rhythm.push(notes[1])
+                rhythm.push(notes[3])
+                rhythm.push(notes[5])
+
+                rhythm.push(notes[2])
+                rhythm.push(notes[4])
+                rhythm.push(notes[6])
+
+                rhythm.push(notes[1])
+                rhythm.push(notes[4])
+                rhythm.push(notes[6])
+              })
+          })
+      }
+      function goToHome() {
+        window.location.replace('index.html')
+      }
+      function displayBoxes(color) {
+        let div = ''
+        for (let i in color) {
+          console.log(color[i])
+          div +=
+            "<div style='box-shadow: 8px 8px 10px 1px rgba(0, 0, 0, .5);margin-right:30px;height: 120px;width: 75px;background-color:" +
+            color[i] +
+            ";'></div>"
+        }
+        console.log(div)
+        document.getElementById('boxes').innerHTML = div
+      }
+      function playMusic() {
+        for (let i = 0; i < rhythm.length; i += 3) {
+          let first, second, third
+          setTimeout(function () {
+            console.log(rhythm[i], rhythm[i + 1], rhythm[i + 2])
+            first = new Audio('./Sounds/' + rhythm[i] + '.mp3')
+            second = new Audio('./Sounds/' + rhythm[i + 1] + '.mp3')
+            third = new Audio('./Sounds/' + rhythm[i + 2] + '.mp3')
+            first.play()
+            second.play()
+            third.play()
+            // first.pause()
+            // second.pause()
+            // third.pause()
+          }, 500 * i)
+        }
+      }
+    </script>
+  </body>
+</html>
