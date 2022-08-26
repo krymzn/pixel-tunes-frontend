@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>img2wav</title>
+    <title>Pixel Tunes</title>
+
+    <link rel="icon" type="image/x-icon" href="./ASSETS/LANDING PAGE/PIXELTUNES.ico">
+
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
       type="text/css"
     />
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./Styles/index.css" />
     <script
       type="text/javascript"
       src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
@@ -16,62 +19,32 @@
     <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
   </head>
   <body
-    style="
-      overflow:hidden;
-      background: rgb(195, 69, 255);
-      background: linear-gradient(
-        0deg,
-        rgba(195, 69, 255, 1) 10%,
-        rgba(255, 126, 205, 1) 90%
-      );
-      height: 100vh;
-      background-repeat: no-repeat;
-      width: 100%;
-    "
+
   >
     <div class="loading-overlay" id="overlay" hidden>
       <div class="overlay__inner">
         <div class="overlay__content"><span class="spinner"></span></div>
       </div>
     </div>
+
+    <div class="about-page">
+      <img src="./ASSETS/LANDING PAGE/ABOUT-THE-PAGE.png" style="cursor: pointer;" alt="About" onclick="goToAbout()" />
+    </div>
+
+
     <div
-      style="
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin: 3rem;
-      "
+      class="logo-container"
     >
-      <img src="./Group 9.png" style="cursor: pointer;" onclick="goToHome()" />
-      <img src="./ABOUT THE PAGE.png" style="cursor: pointer;" alt="About" onclick="goToAbout()" />
+      <img src="./ASSETS/LANDING PAGE/PIXELTUNES.png" onclick="goToHome()" class="logo-img"/>
     </div>
     <div
-      style="
-        top: 50%;
-        left: 50%;
-        width: 30em;
-        height: 18em;
-        margin-top: -9em;
-        margin-left: -15em;
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      "
+      class="upload-button-container"
     >
-      <img
-        hidden
-        style="margin-top: 1rem; margin-bottom: 1rem"
-        id="output_image"
-        height="500px"
-        width="500px"
-      />
+
       <form action="#">
         <div id="myDiv" style="cursor: pointer;">
           <label for="file-input">
-            <img src="./Upload Button.svg" style="cursor: pointer;" />
+            <img src="./ASSETS/LANDING PAGE/Upload button.png" style="cursor: pointer;" class="upload-button-img"/>
           </label>
           <input
             style="display: none"
@@ -81,9 +54,16 @@
             onchange="preview_image(event)"
           />
         </div>
+        <img
+        hidden
+        class="output-image"
+        id="output_image"
+        height="500px"
+        width="500px"
+      />
         <div id="submit" hidden style="cursor: pointer;">
           <label for="file-submit" style="cursor:pointer;">
-            <img src="./Submit Button.svg" />
+            <img src="./ASSETS/SUBMIT PAGE/Submit-button.png" />
           </label>
           <button
             style="display: none"
@@ -94,74 +74,10 @@
         </div>
       </form>
       <script type="text/javascript">
-        let readerResult
-        function preview_image(event) {
-          var reader = new FileReader()
-          reader.onload = function () {
-            var output = document.getElementById('output_image')
-            output.src = reader.result
-            readerResult = reader.result
-          }
-          reader.readAsDataURL(event.target.files[0])
-          var element = document.getElementById('myDiv')
-          element.style.display = 'none'
-          var element = document.getElementById('submit')
-          element.style.display = 'block'
-          var elementPreview = document.getElementById('output_image')
-          elementPreview.style.display = 'block'
-        }
 
-        function submit_form(event) {
-          var element = document.getElementById('overlay')
-          element.style.display = 'block'
-          event.preventDefault()
-          fetch(
-            'https://thawing-escarpment-90509.herokuapp.com/upload-image',
-            {
-              method: 'POST',
-              mode: 'cors',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ file: readerResult }),
-            }
-          )
-            .then((res) => res.json())
-            .then((res) => {
-              console.log(`Response from Notes`, res)
-            })
-            .then((res) => {
-              window.location.replace('play.html')
-            })
-            .then((res) => {
-              element.style.display = 'none'
-            })
-        }
       </script>
     </div>
-    <script>
-      window.onload = function () {
-        fetch(
-          'https://thawing-escarpment-90509.herokuapp.com/delete-image',
-          {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-          .then((res) => res.json())
-          .then((res) => {
-            console.log(`Response from Notes`, res)
-          })
-      }
-      function goToHome() {
-        window.location.replace('index.html')
-      }
-      function goToAbout() {
-        window.location.replace('About.html')
-      }
+    <script src="./JS/index.js">
     </script>
   </body>
 </html>

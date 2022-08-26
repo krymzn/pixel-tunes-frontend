@@ -1,0 +1,77 @@
+body {
+  overflow: scroll;
+  background-image: url("../ASSETS/LANDING\ PAGE/BGdesktop.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+.back-page {
+  display: flex;
+  margin-right: 6%;
+  justify-content: flex-end;
+}
+
+.back-page img {
+  margin-top: 5%;
+  position: fixed;
+  cursor: pointer;
+  margin-right: 8%;
+  width: 170px;
+}
+
+.text-descreption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+/* Mobile styling */
+
+@media only screen and (max-width: 1200px) {
+  body {
+    overflow: scroll;
+    background-image: url("../ASSETS/LANDING\ PAGE/BGmobile.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+  }
+
+  .logo-container {
+    text-align: center;
+    margin: 4rem;
+  }
+
+  .logo-img {
+    width: 90%;
+  }
+
+  .back-page {
+    margin: 0 4rem 0 4rem;
+    justify-content: center;
+  }
+
+  .back-page img {
+    bottom: 0;
+    margin-bottom: 5%;
+    width: 350px;
+  }
+
+  .text-descreption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    word-wrap: break-word;
+  }
+}

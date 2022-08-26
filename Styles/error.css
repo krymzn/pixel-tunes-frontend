@@ -1,0 +1,21 @@
+body {
+    overflow: scroll;
+    background-image: url("../ASSETS/LANDING\ PAGE/BGdesktop.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+  }
+  
+
+.svg-container{
+    display: flex;
+    justify-content: center;
+}
+
+.text{
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    font-family: monospace;
+}

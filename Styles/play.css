@@ -1,0 +1,113 @@
+body {
+    overflow: scroll;
+    background-image: url("../ASSETS/LANDING\ PAGE/BGdesktop.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.logo-container {
+    /* display: flex;
+    flex-direction: row; */
+    /* justify-content: space-between; */
+    align-items: center;
+    margin: 1.5rem 3rem;
+}
+
+.logo-img {
+    cursor: pointer;
+    width: 25%;
+}
+
+.content {
+    display: flex;
+    margin: 2rem;
+}
+
+.right {
+    margin-left: 2%;
+    /* margin-top: 1%; */
+}
+
+
+.colors {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 5%;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 30vw;
+    margin-top: 5rem;
+}
+
+.play-music-img {
+    width: 150px;
+}
+
+.try-img {
+    width: 162px;
+}
+
+@media only screen and (max-width: 1200px) {
+    body {
+        overflow-y: scroll;
+        background-image: url("../ASSETS/LANDING\ PAGE/BGmobile.jpg");
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+    }
+
+    .logo-container {
+        text-align: center;
+        margin: 4rem;
+    }
+
+    .logo-img {
+        visibility: hidden;
+        width: 90%;
+    }
+
+    .content {
+        display: block;
+        margin: 4rem;
+    }
+
+    #output_image {
+        width: 100%;
+    }
+
+    .colors {
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        margin-top: 15%;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        /* width: 30vw; */
+        margin-top: 20rem;
+    }
+
+    .play-music-img {
+        width: 200px;
+    }
+
+    .try-img {
+        width: 212px;
+    }
+
+    .color-boxes {
+        height: 150px;
+    }
+
+}
