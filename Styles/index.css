@@ -1,12 +1,16 @@
 body {
-  overflow: scroll;
+  overflow-y: scroll;
   background-image: url("../ASSETS/LANDING\ PAGE/BGdesktop.jpg");
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
+  font-family: 'Noto Music', sans-serif;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
 
 /******/
 
@@ -179,6 +183,10 @@ body {
     bottom: 0;
     margin-bottom: 5%;
     width: 350px;
+  }
+  
+  body::-webkit-scrollbar {
+    display: none;
   }
 
   /* .upload-button-container .output-image{

@@ -1,13 +1,17 @@
 body {
-  overflow: scroll;
+  overflow-y: scroll;
   background-image: url("../ASSETS/LANDING\ PAGE/BGdesktop.jpg");
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   overflow-x: hidden;
+  font-family: 'Noto Music', sans-serif;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
 
 .back-page {
   display: flex;
@@ -30,6 +34,12 @@ body {
   align-items: center;
   margin-left: 200px;
   margin-right: 200px;
+}
+
+.about-me-text{
+  color: #fff; 
+  font-size: 20px; 
+  font-weight: 500;
 }
 
 /* Mobile styling */
@@ -73,5 +83,15 @@ body {
     margin-left: 3rem;
     margin-right: 3rem;
     word-wrap: break-word;
+  }
+
+  .about-me-text{
+    color: #fff; 
+    font-size: 16px; 
+    font-weight: 500;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
   }
 }
